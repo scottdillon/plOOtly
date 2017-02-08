@@ -142,6 +142,9 @@ symbols_dict = {'asterisk': 35,
  'y-up-open': 137}
 
 class Symbols(object):
+    """
+    Holds a list of plotly marker symbols and numbers as attributes.
+    """
     def __init__(self):
         for key, val in symbols_dict.items():
             setattr(self, key, val)
