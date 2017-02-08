@@ -57,16 +57,16 @@ type: enumerated: "diameter" | "area"
 
 ### [marker['symbol']](https://plot.ly/python/reference/#scatter-marker-symbol)
 Lots of marker options to choose from here. Can be text or a text numeral which correspond to the same symbol. Ex.: "0" | "circle" is the same thing. Adding "100" to the number will change the marker from a filled to open marker. Adding "200" appends a "dot" to the marker name and adding "300" appends an "open-dot" to the symbol name.
-
+One thing to note is that despite what is shown on the plotly website, the numbers are integers and not strings.
 Valid string values and corresponding numbers:
 
-"circle" : "0"
+"circle" : 0
 
-"circle-open" : "100"
+"circle-open" : 100
 
-"circle-dot" : "200"
+"circle-dot" : 200
 
-"circle-open-dot" : "300" 
+"circle-open-dot" : 300
 
 ### [marker['color']](https://plot.ly/python/reference/#scatter-marker-color)
 Set this using the notation "rgba(234,252, 123, 0.5)" or hsl notation. You don't have to include an alpha number but why not.
@@ -76,6 +76,11 @@ Set this using the notation "rgba(234,252, 123, 0.5)" or hsl notation. You don't
 ### [marker['cmax']](https://plot.ly/python/reference/#scatter-marker-cmax)
 
 ### [marker['colorscale']](https://plot.ly/python/reference/#scatter-marker-colorscale)
+Plotly colorscales are:
+['Blackbody', 'Bluered', 'Blues', 'Earth', 'Electric', 'Greens', 'Greys', 'Hot',
+'Jet', 'Picnic', 'Portland', 'Rainbow', 'RdBu', 'Reds', 'Viridis', 'YlGnBu',
+'YlOrRd'] as noted [here](https://community.plot.ly/t/what-colorscales-are-available-in-plotly-and-which-are-the-default/2079/2).
+More info on getting colorscales from mpl is [here](https://plot.ly/python/matplotlib-colorscales/) and [here](https://plot.ly/python/cmocean-colorscales/).
 
 ### [marker['colorsrc']](https://plot.ly/python/reference/#scatter-marker-colorsrc)
 
