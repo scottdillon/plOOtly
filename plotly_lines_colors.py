@@ -10,7 +10,7 @@ TURQUOISE = 'rgba(100, 181, 205, 1.0)'
 BLACK     = 'rgba(  0,   0,   0, 1.0)'
 
 # Seaborn colors
-seaborn_colors = [BLUE, GREEN, RED, PURPLE, YELLOW, TURQUOISE]
+seaborn_colors = [RED, BLUE, GREEN, PURPLE, YELLOW, TURQUOISE]
 
 DASHED = 'dash'
 DOT    = 'dot'
@@ -79,18 +79,18 @@ lines = {
     'turquoise': line_turquoise
 }
 
-blue_solid_scatter_line      = go.Scatter(marker=marker_blue, line=dict(width=4), mode=LINES_ONLY)
-blue_dashed_scatter_line     = go.Scatter(marker=marker_blue, line=dict(dash=DASHED), mode=LINES_ONLY)
-green_solid_scatter_line     = go.Scatter(marker=marker_green, line=dict(width=4), mode=LINES_ONLY)
-green_dashed_scatter_line    = go.Scatter(marker=marker_green, line=dict(dash=DASHED), mode=LINES_ONLY)
-red_solid_scatter_line       = go.Scatter(marker=marker_red, line=dict(width=4), mode=LINES_ONLY)
-red_dashed_scatter_line      = go.Scatter(marker=marker_red, line=dict(dash=DASHED), mode=LINES_ONLY)
-purple_solid_scatter_line    = go.Scatter(marker=marker_purple, line=dict(width=4), mode=LINES_ONLY)
-purple_dashed_scatter_line   = go.Scatter(marker=marker_purple, line=dict(dash=DASHED), mode=LINES_ONLY)
-yellow_solid_scatter_line    = go.Scatter(marker=marker_yellow, line=dict(width=4), mode=LINES_ONLY)
-yellow_dashed_scatter_line   = go.Scatter(marker=marker_yellow, line=dict(dash=DASHED), mode=LINES_ONLY)
-turquoise_solid_scatter_line = go.Scatter(marker=marker_turquoise, line=dict(width=4), mode=LINES_ONLY)
-turqiose_dashed_scatter_line = go.Scatter(marker=marker_turquoise, line=dict(dash=DASHED), mode=LINES_ONLY)
+blue_solid_scatter_line      = go.Scatter(marker=marker_blue, line=line_blue, mode=LINES_ONLY)
+blue_dashed_scatter_line     = go.Scatter(marker=marker_blue, line=line_blue, mode=LINES_ONLY)
+green_solid_scatter_line     = go.Scatter(marker=marker_green, line=line_green, mode=LINES_ONLY)
+green_dashed_scatter_line    = go.Scatter(marker=marker_green, line=line_green, mode=LINES_ONLY)
+red_solid_scatter_line       = go.Scatter(marker=marker_red, line=line_red, mode=LINES_ONLY)
+red_dashed_scatter_line      = go.Scatter(marker=marker_red, line=line_red, mode=LINES_ONLY)
+purple_solid_scatter_line    = go.Scatter(marker=marker_purple, line=line_purple, mode=LINES_ONLY)
+purple_dashed_scatter_line   = go.Scatter(marker=marker_purple, line=line_purple, mode=LINES_ONLY)
+yellow_solid_scatter_line    = go.Scatter(marker=marker_yellow, line=line_yellow, mode=LINES_ONLY)
+yellow_dashed_scatter_line   = go.Scatter(marker=marker_yellow, line=line_yellow, mode=LINES_ONLY)
+turquoise_solid_scatter_line = go.Scatter(marker=marker_turquoise, line=line_turquoise, mode=LINES_ONLY)
+turqiose_dashed_scatter_line = go.Scatter(marker=marker_turquoise, line=line_turquoise, mode=LINES_ONLY)
 
 class ScatterFactory(object):
     def __init__(self):
@@ -99,11 +99,13 @@ class ScatterFactory(object):
         self.line_types = cycle(linetypes)
         self.line_modes = cycle(linemode)
 
-    def __new__(self, linecolor=None, markercolor=None, mode=None, lineweight=None, dash=None, msymbol=None, markersize=None, lineshape=None):
+    def __new__(self, x=None, y=None, linecolor=None, markercolor=None, mode=None, lineweight=None,
+                dash=None, msymbol=None, markersize=None, lineshape=None, showlegend=True):
         """
-        
-        :param linecolor: line and marker color
-        :param markercolor: marker color
+        :param x: The x asix values.
+        :param y: y axis values to plot.
+        :param linecolor: line and marker color.
+        :param markercolor: marker color.
         :param mode: line mode 'lines' | 'lines+markers'
         :param lineweight: line width in pixels
         :param dash: line dash type ['solid' | 'dash' | 'dot' ]
@@ -112,7 +114,8 @@ class ScatterFactory(object):
         :param markersize: marker size in pixels
         :param lineshape: line shape. Should the line be a straight line between data points or a spline. There
             are other step functions too. See repo cheatsheet for more info.
-        :return:
+        :return: Returns a newly instantiated plotly.graph_objs.Scatter object with appropriate dictionary/attribute
+            entries.
         """
 
         if not markersize:
@@ -131,7 +134,7 @@ class ScatterFactory(object):
         scatter.marker['color'] = markercolor
         scatter.marker['line']['color'] = markercolor
         scatter.marker['line']['width'] = lineweight
-
+        scatter.showlegend = showlegend
         return scatter
 
 
