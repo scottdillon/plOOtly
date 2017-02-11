@@ -41,6 +41,8 @@ adding different modes and dash options?
 
 This is a code example before I wrote plotly_lines_colors.py:
 
+    from itertools import cycle
+    import plotly
     import plotly.graph_objs as go
     data = []
     plot_title  = 'My Esoteric Plot Title'
@@ -51,10 +53,10 @@ This is a code example before I wrote plotly_lines_colors.py:
                        yaxis=dict(title=yaxis_label),
                        width=1000
                        )
-    colors = pcl.seaborn_colors
+    colors = cycle(pcl.seaborn_colors)
 
-    for i, col in enumerate(self.plot_range.columns[:-1]):
-        color = colors[i]
+    for col in self.plot_range.columns[:-1]:
+        color = next(colors)
 
         trace                 = go.Scatter()
         trace.x               = self.plot_range.loc[:, 'stop_week']
@@ -78,10 +80,13 @@ This is a code example before I wrote plotly_lines_colors.py:
         data.append(trace_ma)
 
     fig = go.Figure(data=data, layout=layout)
-    return plotly.offline.plot(figure_or_data=fig, include_plotlyjs=False, output_type='div', show_link=False)
+    return plotly.offline.plot(figure_or_data=fig, include_plotlyjs=False,
+                               output_type='div', show_link=False)
 
 which turns into:
 
+    from itertools import cycle
+    import plotly
     import plotly.graph_objs as go
     data = go.Data()
     plot_title =  'My Esoteric Plot Title'
@@ -112,4 +117,8 @@ which turns into:
         data.append(trace_ma)
 
     fig = go.Figure(data=data, layout=layout)
-    return plotly.offline.plot(figure_or_data=fig, include_plotlyjs=False, output_type='div', show_link=False)
+    return plotly.offline.plot(figure_or_data=fig, include_plotlyjs=False,
+                               output_type='div', show_link=False)
+
+The pre-defined markers can be used to set the marker and it's options
+rather than setting each option individually.

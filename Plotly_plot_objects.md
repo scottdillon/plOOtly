@@ -201,3 +201,8 @@ Sets the radial coordinates.
 type: iterable: list, pd.Series, etc.
 
 ## [Add layout attributes here](https://plot.ly/python/reference/#layout)
+
+
+
+## Getting Fancy with Titles
+[Adding HTML and links to Charts](http://help.plot.ly/adding-HTML-and-links-to-charts/)
