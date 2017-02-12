@@ -292,18 +292,18 @@ lines = {
 }
 
 # Preset scatter lines
-blue_solid_scatter_line      = go.Scatter(marker=marker_blue,       line=line_blue,      mode=Mode.LINES_ONLY)
-blue_dashed_scatter_line     = go.Scatter(marker=marker_blue,       line=line_blue,      mode=Mode.LINES_ONLY)
-green_solid_scatter_line     = go.Scatter(marker=marker_green,      line=line_green,     mode=Mode.LINES_ONLY)
-green_dashed_scatter_line    = go.Scatter(marker=marker_green,      line=line_green,     mode=Mode.LINES_ONLY)
-red_solid_scatter_line       = go.Scatter(marker=marker_red,        line=line_red,       mode=Mode.LINES_ONLY)
-red_dashed_scatter_line      = go.Scatter(marker=marker_red,        line=line_red,       mode=Mode.LINES_ONLY)
-purple_solid_scatter_line    = go.Scatter(marker=marker_purple,     line=line_purple,    mode=Mode.LINES_ONLY)
-purple_dashed_scatter_line   = go.Scatter(marker=marker_purple,     line=line_purple,    mode=Mode.LINES_ONLY)
-yellow_solid_scatter_line    = go.Scatter(marker=marker_yellow,     line=line_yellow,    mode=Mode.LINES_ONLY)
-yellow_dashed_scatter_line   = go.Scatter(marker=marker_yellow,     line=line_yellow,    mode=Mode.LINES_ONLY)
-turquoise_solid_scatter_line = go.Scatter(marker=marker_turquoise,  line=line_turquoise, mode=Mode.LINES_ONLY)
-turqiose_dashed_scatter_line = go.Scatter(marker=marker_turquoise,  line=line_turquoise, mode=Mode.LINES_ONLY)
+blue_solid_scatter_line       = go.Scatter(marker=marker_blue,       line=line_blue,      mode=Mode.LINES_ONLY)
+blue_dashed_scatter_line      = go.Scatter(marker=marker_blue,       line=line_blue,      mode=Mode.LINES_ONLY)
+green_solid_scatter_line      = go.Scatter(marker=marker_green,      line=line_green,     mode=Mode.LINES_ONLY)
+green_dashed_scatter_line     = go.Scatter(marker=marker_green,      line=line_green,     mode=Mode.LINES_ONLY)
+red_solid_scatter_line        = go.Scatter(marker=marker_red,        line=line_red,       mode=Mode.LINES_ONLY)
+red_dashed_scatter_line       = go.Scatter(marker=marker_red,        line=line_red,       mode=Mode.LINES_ONLY)
+purple_solid_scatter_line     = go.Scatter(marker=marker_purple,     line=line_purple,    mode=Mode.LINES_ONLY)
+purple_dashed_scatter_line    = go.Scatter(marker=marker_purple,     line=line_purple,    mode=Mode.LINES_ONLY)
+yellow_solid_scatter_line     = go.Scatter(marker=marker_yellow,     line=line_yellow,    mode=Mode.LINES_ONLY)
+yellow_dashed_scatter_line    = go.Scatter(marker=marker_yellow,     line=line_yellow,    mode=Mode.LINES_ONLY)
+turquoise_solid_scatter_line  = go.Scatter(marker=marker_turquoise,  line=line_turquoise, mode=Mode.LINES_ONLY)
+turquoise_dashed_scatter_line = go.Scatter(marker=marker_turquoise,  line=line_turquoise, mode=Mode.LINES_ONLY)
 
 
 line_cycle = {'solid':[red_solid_scatter_line,
@@ -317,5 +317,5 @@ line_cycle = {'solid':[red_solid_scatter_line,
                         green_dashed_scatter_line,
                         purple_dashed_scatter_line,
                         yellow_dashed_scatter_line,
-                        turqiose_dashed_scatter_line]
+                        turquoise_dashed_scatter_line]
               }
