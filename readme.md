@@ -54,7 +54,7 @@ This code sample is the simplest possible with no method parameters. Now, take a
     trace1.marker.colorscale = 'Viridis'
     trace1.marker.size = list([random.random() * 50.0 for x in range(100)])
 
-    data = go.Data([trace0, trace1])
+    data = go.Data([trace1])
 
     plotly.offline.plot(figure_or_data=data, filename='output_files/basic-line.html',
                         include_plotlyjs=True, show_link=False)
