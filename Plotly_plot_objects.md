@@ -1,34 +1,36 @@
 ## Plotly Cheatsheet
 
 First, you'll need to import the graph objects:
-
-	import plotly.graph_objs as go
-
+``` Python
+import plotly.graph_objs as go
+```
 Then, you can place the data into plot series objects such as go.Scatter, go.Bar, etc.
-	
-	trace1 = go.Scatter(
-	    x = iterable,
-	    y = iterable,
-	    mode = 'lines+markers',
-	    name = iterable,
-	    text = iterable
-	    marker = dict(
-	    	size = 10,
-	    	symbol = 'circle',
-	    	color = 'rgba(152, 0, 0, .8)',
-	    	colorscale = 'Viridis',
-	    	line = dict(
-	    		width = 2,
-		        color = 'rgba(10, 10, 10, 0.5)'
-		        )
-		 )
-	    textposition : 'top left',
-	    hoverinfo : 'x', 'y',
-	    line = dict()
-	    )
-	    
+
+``` Python
+trace1 = go.Scatter(
+                    x = iterable,
+                    y = iterable,
+                    mode = 'lines+markers',
+                    name = iterable,
+                    text = iterable
+                    marker = dict(
+                        size = 10,
+                        symbol = 'circle',
+                        color = 'rgba(152, 0, 0, .8)',
+                        colorscale = 'Viridis',
+                        line = dict(
+                            width = 2,
+                            color = 'rgba(10, 10, 10, 0.5)'
+                            )
+                     )
+                    textposition : 'top left',
+                    hoverinfo : 'x', 'y',
+                    line = dict()
+                    )
+```
+
 ## [go.Scatter attributes](https://plot.ly/python/reference/#scatter)
-	    
+
 ### [x](https://plot.ly/python/reference/#scatter-x)
 A data iterable. Some sort of number or categorical iterable to use for the x axis. a pd.DataFrame.Index object will work just fine.
 
@@ -46,7 +48,7 @@ This attribute is an iterable of the same length as the x or y attribute iterabl
 The values of the iterable will be appended to the hover text.
 
 ### [marker](https://plot.ly/python/reference/#scatter-marker)
-This is a dictionary object. Assigning a scalar object such as a string or integer will break  your plot. Probably in a way that you see the plot but don't see the trace on the plot. All following keywords for this dict object will have the keyword in a dict['keyword'] notation to indicate it is still part of the marker dict object. 
+This is a dictionary object. Assigning a scalar object such as a string or integer will break  your plot. Probably in a way that you see the plot but don't see the trace on the plot. All following keywords for this dict object will have the keyword in a dict['keyword'] notation to indicate it is still part of the marker dict object.
 
 ### [marker['size']](https://plot.ly/python/reference/#scatter-marker-size)
 Default size is 6. Sets the marker size in pixels.

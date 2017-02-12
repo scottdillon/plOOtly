@@ -26,17 +26,19 @@ Clone the repo into a location on your path.
 If a new ScatterFactory object is instantiated with no arguments, you'll
 get a plotly.graph_objs.Scatter object with the defaults. Ex:
 
-    import plotly.graph_objs as go
-    data = []
-    scat_fact = plc.ScatterFactory
-    trace = scat_fact()
-    trace.x = [1,2,3]
-    trace.y = [1,2,3]
-    data.append(trace)
-    plotly.offline.iplot(data)
-
-This code sample is the simplest possible with no method parameters. Now, take a look at the following:
-
+```` Python
+import plotly.graph_objs as go
+data = []
+scat_fact = plc.ScatterFactory
+trace = scat_fact()
+trace.x = [1,2,3]
+trace.y = [1,2,3]
+data.append(trace)
+plotly.offline.iplot(data)
+````
+This code sample is the simplest possible with no method parameters. In this case, the plotly defaults will be used.
+Now, take a look at the following:
+``` Python
     import random
     import plotly
     import plotly.graph_objs as go
@@ -45,8 +47,10 @@ This code sample is the simplest possible with no method parameters. Now, take a
     import plotly_config.symbols as symbols
 
     sf = plc.ScatterFactory()
-    trace1 = sf.scatter(lw=0, color=Colors.RED, symbol=symbols.circle, lineshape=plc.LineShape.SPLINE,
-                     markersize=20, markerfacecolor=Colors.GREEN, mode=plc.Mode.MARKERS_ONLY, markeredgewidth=0)
+    trace1 = sf.scatter(lw=0, color=Colors.RED, symbol=symbols.circle,
+                        lineshape=plc.LineShape.SPLINE, markersize=20,
+                        markerfacecolor=Colors.GREEN, mode=plc.Mode.MARKERS_ONLY,
+                        markeredgewidth=0)
 
     trace1.x = list(range(100))
     trace1.y = list(range(100))
@@ -57,8 +61,8 @@ This code sample is the simplest possible with no method parameters. Now, take a
     data = go.Data([trace1])
 
     plotly.offline.plot(figure_or_data=data, filename='output_files/basic-line.html',
-                        include_plotlyjs=True, show_link=False)
-
+                        include_plotlyjs=False, show_link=False)
+```
 Still, this is relatively simple; a single trace. The scatter factory is great for plotting similar
 pandas dataframes columns with similar aesthetics and just making one trace dashed to differentiate it.
 
@@ -71,7 +75,7 @@ example `trace.marker.line.color = plc.Colors.RED` would change the marker edge 
 red.
 
 This is a code example before I wrote plotly_lines_colors.py:
-
+``` Python
     from itertools import cycle
     import plotly
     import plotly.graph_objs as go
@@ -113,9 +117,9 @@ This is a code example before I wrote plotly_lines_colors.py:
     fig = go.Figure(data=data, layout=layout)
     return plotly.offline.plot(figure_or_data=fig, include_plotlyjs=False,
                                output_type='div', show_link=False)
-
+```
 which turns into:
-
+``` Python
     from itertools import cycle
     import plotly
     import plotly.graph_objs as go
@@ -150,7 +154,7 @@ which turns into:
     fig = go.Figure(data=data, layout=layout)
     return plotly.offline.plot(figure_or_data=fig, include_plotlyjs=False,
                                output_type='div', show_link=False)
-
+```
 
 I'd like to incorporate the pre-defined markers and lines somehow to make it super simple but I haven't decided if it's worth it
 or whether it just makes it more confusing.
