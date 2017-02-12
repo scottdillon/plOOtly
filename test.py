@@ -1,27 +1,23 @@
+import random
 import plotly
 import plotly.graph_objs as go
 import plotly_config.plotly_lines_colors as plc
+from plotly_config.plotly_lines_colors import Colors, MarkerTips
 import plotly_config.symbols as symbols
 
 sf = plc.ScatterFactory()
 
-markerline = plc.MarkerLine(color=plc.TURQUOISE, width=plc.MRKR_PIXELS)
-print("1:{}".format(markerline))
-marker = plc.Marker(symbol=symbols.circle, size=20, line=markerline, color=plc.BLUE)
-print("2:{}".format(markerline))
-line = plc.Line(color=plc.RED, width=plc.LINE_MEDIUM)
-print("3:{}".format(markerline))
+trace0 = sf.scatter()
+trace1 = sf.scatter(lw=0, color=Colors.RED, symbol=symbols.circle, lineshape=plc.LineShape.SPLINE,
+                 markersize=20, markerfacecolor=Colors.GREEN, mode=plc.Mode.MARKERS_ONLY, markeredgewidth=0)
 
-trace0 = sf.scatter(markerfacecolor=plc.TURQUOISE, markerwidth=plc.MRKR_PIXELS, symbol=symbols.circle, markersize=plc.LINE_MEDIUM,
-                    )
-# print("4:{}".format(trace0))
-trace0.line = line
-trace0.marker.line = markerline
+trace1.x = list(range(100))
+trace1.y = list(range(100))
+trace1.marker.color = list(range(100))
+trace1.marker.colorscale = 'Viridis'
+trace1.marker.size = list([random.random() * 50.0 for x in range(100)])
 
-trace0.x=[1, 2, 3, 4]
-trace0.y=[10, 15, 13, 17]
+data = go.Data([trace0, trace1])
 
-data = go.Data([trace0])
-
-plotly.offline.plot(figure_or_data=data, filename = 'output_files/basic-line.html',
+plotly.offline.plot(figure_or_data=data, filename='output_files/basic-line.html',
                     include_plotlyjs=True, show_link=False)

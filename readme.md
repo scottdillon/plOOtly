@@ -34,10 +34,41 @@ get a plotly.graph_objs.Scatter object with the defaults. Ex:
     trace.y = [1,2,3]
     data.append(trace)
     plotly.offline.iplot(data)
-That example is simple and doesn't justify using this library but imagine
-creating a more complex with different line styles, colors and widths and
-different values for the marker style and marker line styles. How about
-adding different modes and dash options?
+
+This code sample is the simplest possible with no method parameters. Now, take a look at the following:
+
+    import random
+    import plotly
+    import plotly.graph_objs as go
+    import plotly_config.plotly_lines_colors as plc
+    from plotly_config.plotly_lines_colors import Colors, MarkerTips
+    import plotly_config.symbols as symbols
+
+    sf = plc.ScatterFactory()
+    trace1 = sf.scatter(lw=0, color=Colors.RED, symbol=symbols.circle, lineshape=plc.LineShape.SPLINE,
+                     markersize=20, markerfacecolor=Colors.GREEN, mode=plc.Mode.MARKERS_ONLY, markeredgewidth=0)
+
+    trace1.x = list(range(100))
+    trace1.y = list(range(100))
+    trace1.marker.color = list(range(100))
+    trace1.marker.colorscale = 'Viridis'
+    trace1.marker.size = list([random.random() * 50.0 for x in range(100)])
+
+    data = go.Data([trace0, trace1])
+
+    plotly.offline.plot(figure_or_data=data, filename='output_files/basic-line.html',
+                        include_plotlyjs=True, show_link=False)
+
+Still, this is relatively simple; a single trace. The scatter factory is great for plotting similar
+pandas dataframes columns with similar aesthetics and just making one trace dashed to differentiate it.
+
+I've tried to use argument names similar to matplotlib marker and line arguments for familiarity. I also think
+they are more descriptive and help with determining whether your changing the marker width or the line width or
+the marker line width.
+
+Any attribute can be changed by chaining attributes, where necessary, using the plotly argument names. So for
+example `trace.marker.line.color = plc.Colors.RED` would change the marker edge color to the seaborn default color
+red.
 
 This is a code example before I wrote plotly_lines_colors.py:
 
@@ -120,5 +151,6 @@ which turns into:
     return plotly.offline.plot(figure_or_data=fig, include_plotlyjs=False,
                                output_type='div', show_link=False)
 
-The pre-defined markers can be used to set the marker and it's options
-rather than setting each option individually.
+
+I'd like to incorporate the pre-defined markers and lines somehow to make it super simple but I haven't decided if it's worth it
+or whether it just makes it more confusing.
