@@ -164,17 +164,17 @@ class ScatterFactory(dict):
         return markeredgecolor, markerfacecolor, color
 
     @staticmethod
-    def check_markersize(markersize, lineweight):
+    def check_markeredgewidth(markeredgewidth, lineweight):
         """
-        If markersize is None, make it the same as the lineweight.
-        :param markersize:
+        Assume that the markeredgewidth should be the same as the lineweight if it was not passed explicitly.
+        :param markeredgewidth: The size in pixels of the marker.
+        :param lineweight: the thickness in pixels of the line connecting data points.
         :return:
         """
-        if markersize:
-            return markersize
+        if markeredgewidth or markeredgewidth == 0:
+            return markeredgewidth
         else:
             return lineweight
-
 
     def scatter(self, *args, **kwargs):
         return self._return_scatter_obj(*args, **kwargs)
@@ -188,6 +188,8 @@ class ScatterFactory(dict):
         """
         Creates and returns a plotly Scatter object with appropriate arguments placed into the Scatter object internal
         dictionary/attributes. If no markercolor or size is given the color and size of the line is used instead.
+
+        * All parameters are optional *
 
         :param x: The x axis values.
         :param y: y axis values to plot.
@@ -211,7 +213,7 @@ class ScatterFactory(dict):
             entries.
         """
         mec, mfc, c = self.check_markercolor(markeredgecolor, markerfacecolor, color)
-        markerwidth = self.check_markersize(markeredgewidth, lw)
+        markerwidth = self.check_markeredgewidth(markeredgewidth, lw)
 
         markerline = MarkerLine(width=markerwidth, color=mec)
         marker = Marker(line=markerline, symbol=symbol, size=markersize, color=mfc)
