@@ -29,7 +29,7 @@ get a plotly.graph_objs.Scatter object with the defaults. Ex:
 ```` Python
 from plotly.offline import iplot
 import plotly.graph_objs as go
-from plOOtly import ScatterFactory
+from plOOtly.plotly_lines_colors import ScatterFactory
 data = []
 scat_fact = ScatterFactory
 trace = scat_fact()
