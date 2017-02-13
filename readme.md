@@ -31,8 +31,8 @@ from plotly.offline import iplot
 import plotly.graph_objs as go
 from plOOtly.plotly_lines_colors import ScatterFactory
 data = []
-scat_fact = ScatterFactory
-trace = scat_fact()
+scat_fact = ScatterFactory()
+trace = scat_fact.line()
 trace.x = [1,2,3]
 trace.y = [1,2,3]
 data.append(trace)
@@ -136,16 +136,16 @@ layout = go.Layout(title=plot_title,
                    width=1000
                    )
 colors = cycle(plc.seaborn_colors)
-scat_fact = plc.ScatterFactory
+scat_fact = plc.ScatterFactory()
 
 for i, col in enumerate(self.plot_range.columns[:-1]):
     color = next(colors)
-    trace = scat_fact(linecolor=color, markercolor=color, lineweight=2, mode=plc.LINES_ONLY)
+    trace = scat_fact.line(linecolor=color, markercolor=color, lineweight=2, mode=plc.LINES_ONLY)
     trace.x = self.plot_range.loc[:, 'stop_week']
     trace.y = self.plot_range.loc[:, col]
     trace.name = col
 
-    trace_ma = scat_fact(linecolor=color, markercolor=color, lineweight=4, dash=plc.DASHED,
+    trace_ma = scat_fact.line(linecolor=color, markercolor=color, lineweight=4, dash=plc.DASHED,
                          lineshape=plc.SPLINE, mode=plc.LINES_ONLY)
     trace_ma.x = self.plot_range.loc[:, 'stop_week']
     trace_ma.y = self.plot_range.loc[:, col].rolling(4).mean()
