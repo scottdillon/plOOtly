@@ -1,9 +1,9 @@
 import random
 import plotly
 import plotly.graph_objs as go
-import plotly_config.plotly_lines_colors as plc
-from plotly_config.plotly_lines_colors import Colors, Mode, LineShape
-import plotly_config.symbols as symbols
+import plOOtly.plotly_lines_colors as plc
+from plOOtly.plotly_lines_colors import Colors, Mode, LineShape
+import plOOtly.symbols as symbols
 
 sf = plc.ScatterFactory()
 

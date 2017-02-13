@@ -7,23 +7,23 @@ class MarkerTips(object):
     Describe line weights
     """
     ULTRA_FINE_TIP = 1
-    FINE_TIP = 3
-    MEDIUM = 5
-    BOLD = 8
-    HEAVYWEIGHT = 10
+    FINE_TIP       = 3
+    MEDIUM         = 5
+    BOLD           = 8
+    HEAVYWEIGHT    = 10
 
 
 class Colors(object):
     """
     Seaborn default colors
     """
-    BLUE = 'rgba(76,  114, 176, 1.0)'
-    GREEN = 'rgba(85,  168, 104, 1.0)'
-    RED = 'rgba(196,  78,  82, 1.0)'
-    PURPLE = 'rgba(129, 114, 178, 1.0)'
-    YELLOW = 'rgba(204, 185, 116, 1.0)'
+    BLUE      = 'rgba(76,  114, 176, 1.0)'
+    GREEN     = 'rgba(85,  168, 104, 1.0)'
+    RED       = 'rgba(196,  78,  82, 1.0)'
+    PURPLE    = 'rgba(129, 114, 178, 1.0)'
+    YELLOW    = 'rgba(204, 185, 116, 1.0)'
     TURQUOISE = 'rgba(100, 181, 205, 1.0)'
-    BLACK = 'rgba(  0,   0,   0, 1.0)'
+    BLACK     = 'rgba(  0,   0,   0, 1.0)'
 
     def __init__(self):
         self._seaborn_colors = [self.RED, self.BLUE, self.GREEN, self.PURPLE, self.YELLOW, self.TURQUOISE]
@@ -91,7 +91,7 @@ class ShortSymbols(object):
 
     def __init__(self):
         self._marker_shapes = cycle([self.CIRCLE, self.SQUARE, self.DIAMOND, self.CROSS, self.X,
-                              self.PENTAGON, self.HEXAGON, self.STAR, self.CROSS_CIRCLE])
+                                     self.PENTAGON, self.HEXAGON, self.STAR, self.CROSS_CIRCLE])
 
     @property
     def marker_shapes(self):
@@ -175,22 +175,6 @@ class ScatterFactory(dict):
         else:
             return lineweight
 
-    # @staticmethod
-    # def check_marker(marker=None, msymbol=None, markersize=None, markercolor=None, lineweight=None):
-    #     """
-    #     If a prebuilt Marker object is already provided, then use that. If not, build one and return the Marker object
-    #     :param marker:
-    #     :param msymbol:
-    #     :param markersize:
-    #     :param markercolor:
-    #     :param lineweight:
-    #     :return:
-    #     """
-    #     if marker:
-    #         return marker
-    #     else:
-    #         markerline = MarkerLine(width=lineweight, color=markercolor)
-    #         return Marker(symbol=msymbol, size=markersize, color=markercolor, line=markerline)
 
     def scatter(self, *args, **kwargs):
         return self._return_scatter_obj(*args, **kwargs)
@@ -246,19 +230,19 @@ class ScatterFactory(dict):
         return scatter
 
 
-sc = Colors()
-tips = MarkerTips()
-s = ShortSymbols()
+sc    = Colors()
+tips  = MarkerTips()
+s     = ShortSymbols()
 shape = LineShape()
-lt = LineType()
+lt    = LineType()
 """
 Pre-defined marker dicts for assigning to the Scatter object.
 """
-marker_blue      = Marker(color=sc.BLUE, line=MarkerLine(color=sc.BLUE, width=MarkerTips.FINE_TIP), size=MarkerTips.FINE_TIP, symbol=s.CIRCLE)
-marker_red       = Marker(color=sc.RED, line=MarkerLine(color=sc.RED, width=MarkerTips.FINE_TIP), size=MarkerTips.FINE_TIP, symbol=s.CIRCLE)
-marker_green     = Marker(color=sc.GREEN, line=MarkerLine(color=sc.GREEN, width=MarkerTips.FINE_TIP), size=MarkerTips.FINE_TIP, symbol=s.CIRCLE)
-marker_purple    = Marker(color=sc.PURPLE, line=MarkerLine(color=sc.PURPLE, width=MarkerTips.FINE_TIP), size=MarkerTips.FINE_TIP, symbol=s.CIRCLE)
-marker_yellow    = Marker(color=sc.YELLOW, line=MarkerLine(color=sc.YELLOW, width=MarkerTips.FINE_TIP), size=MarkerTips.FINE_TIP, symbol=s.CIRCLE)
+marker_blue      = Marker(color=sc.BLUE,      line=MarkerLine(color=sc.BLUE,      width=MarkerTips.FINE_TIP), size=MarkerTips.FINE_TIP, symbol=s.CIRCLE)
+marker_red       = Marker(color=sc.RED,       line=MarkerLine(color=sc.RED,       width=MarkerTips.FINE_TIP), size=MarkerTips.FINE_TIP, symbol=s.CIRCLE)
+marker_green     = Marker(color=sc.GREEN,     line=MarkerLine(color=sc.GREEN,     width=MarkerTips.FINE_TIP), size=MarkerTips.FINE_TIP, symbol=s.CIRCLE)
+marker_purple    = Marker(color=sc.PURPLE,    line=MarkerLine(color=sc.PURPLE,    width=MarkerTips.FINE_TIP), size=MarkerTips.FINE_TIP, symbol=s.CIRCLE)
+marker_yellow    = Marker(color=sc.YELLOW,    line=MarkerLine(color=sc.YELLOW,    width=MarkerTips.FINE_TIP), size=MarkerTips.FINE_TIP, symbol=s.CIRCLE)
 marker_turquoise = Marker(color=sc.TURQUOISE, line=MarkerLine(color=sc.TURQUOISE, width=MarkerTips.FINE_TIP), size=MarkerTips.FINE_TIP, symbol=s.CIRCLE)
 
 
@@ -306,16 +290,16 @@ turquoise_solid_scatter_line  = go.Scatter(marker=marker_turquoise,  line=line_t
 turquoise_dashed_scatter_line = go.Scatter(marker=marker_turquoise,  line=line_turquoise, mode=Mode.LINES_ONLY)
 
 
-line_cycle = {'solid':[red_solid_scatter_line,
-                       blue_solid_scatter_line,
-                       green_solid_scatter_line,
-                       purple_solid_scatter_line,
-                       yellow_solid_scatter_line,
-                       turquoise_solid_scatter_line],
-              'dashed':[red_dashed_scatter_line,
-                        blue_dashed_scatter_line,
-                        green_dashed_scatter_line,
-                        purple_dashed_scatter_line,
-                        yellow_dashed_scatter_line,
-                        turquoise_dashed_scatter_line]
+line_cycle = {'solid': [red_solid_scatter_line,
+                        blue_solid_scatter_line,
+                        green_solid_scatter_line,
+                        purple_solid_scatter_line,
+                        yellow_solid_scatter_line,
+                        turquoise_solid_scatter_line],
+              'dashed': [red_dashed_scatter_line,
+                         blue_dashed_scatter_line,
+                         green_dashed_scatter_line,
+                         purple_dashed_scatter_line,
+                         yellow_dashed_scatter_line,
+                         turquoise_dashed_scatter_line]
               }

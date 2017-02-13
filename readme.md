@@ -1,4 +1,4 @@
-# Plotly_Lines_and_Colors
+# plOOtly
 
 ### Synopsis
 This is a collection of helper constants, plotly.graph_obj classes and other
@@ -27,41 +27,42 @@ If a new ScatterFactory object is instantiated with no arguments, you'll
 get a plotly.graph_objs.Scatter object with the defaults. Ex:
 
 ```` Python
+from plotly.offline import iplot
 import plotly.graph_objs as go
+from plOOtly import ScatterFactory
 data = []
-scat_fact = plc.ScatterFactory
+scat_fact = ScatterFactory
 trace = scat_fact()
 trace.x = [1,2,3]
 trace.y = [1,2,3]
 data.append(trace)
-plotly.offline.iplot(data)
+iplot(data)
 ````
 This code sample is the simplest possible with no method parameters. In this case, the plotly defaults will be used.
 Now, take a look at the following:
 ``` Python
-    import random
-    import plotly
-    import plotly.graph_objs as go
-    import plotly_config.plotly_lines_colors as plc
-    from plotly_config.plotly_lines_colors import Colors, MarkerTips
-    import plotly_config.symbols as symbols
+import random
+from plotly.offline import iplot
+from plotly import graph_objs as go
+from plOOtly.plotly_lines_colors import ScatterFactory, Colors, MarkerTips, Mode, LineShape
+import plOOtly.symbols as symbols
 
-    sf = plc.ScatterFactory()
-    trace1 = sf.scatter(lw=0, color=Colors.RED, symbol=symbols.circle,
-                        lineshape=plc.LineShape.SPLINE, markersize=20,
-                        markerfacecolor=Colors.GREEN, mode=plc.Mode.MARKERS_ONLY,
-                        markeredgewidth=0)
+sf = ScatterFactory()
+trace1 = sf.scatter(lw=0, color=Colors.RED, symbol=symbols.circle,
+                    lineshape=LineShape.SPLINE, markersize=20,
+                    markerfacecolor=Colors.GREEN, mode=Mode.MARKERS_ONLY,
+                    markeredgewidth=0)
 
-    trace1.x = list(range(100))
-    trace1.y = list(range(100))
-    trace1.marker.color = list(range(100))
-    trace1.marker.colorscale = 'Viridis'
-    trace1.marker.size = list([random.random() * 50.0 for x in range(100)])
+trace1.x = list(range(100))
+trace1.y = list(range(100))
+trace1.marker.color = list(range(100))
+trace1.marker.colorscale = 'Viridis'
+trace1.marker.size = list([random.random() * 50.0 for x in range(100)])
 
-    data = go.Data([trace1])
+data = go.Data([trace1])
 
-    plotly.offline.plot(figure_or_data=data, filename='output_files/basic-line.html',
-                        include_plotlyjs=False, show_link=False)
+iplot(figure_or_data=data, filename='output_files/basic-line.html',
+                    show_link=False)
 ```
 Still, this is relatively simple; a single trace. The scatter factory is great for plotting similar
 pandas dataframes columns with similar aesthetics and just making one trace dashed to differentiate it.
@@ -76,84 +77,86 @@ red.
 
 This is a code example before I wrote plotly_lines_colors.py:
 ``` Python
-    from itertools import cycle
-    import plotly
-    import plotly.graph_objs as go
-    data = []
-    plot_title  = 'My Esoteric Plot Title'
-    xaxis_label = 'Date'
-    yaxis_label = 'Sliceable Height (mm)'
-    layout = go.Layout(title=plot_title,
-                       xaxis=dict(title=xaxis_label),
-                       yaxis=dict(title=yaxis_label),
-                       width=1000
-                       )
-    colors = cycle(pcl.seaborn_colors)
+from itertools import cycle
+import plotly
+import plotly.graph_objs as go
+data = []
+plot_title  = 'My Esoteric Plot Title'
+xaxis_label = 'Date'
+yaxis_label = 'Sliceable Height (mm)'
+layout = go.Layout(title=plot_title,
+                   xaxis=dict(title=xaxis_label),
+                   yaxis=dict(title=yaxis_label),
+                   width=1000
+                   )
+colors = cycle(pcl.seaborn_colors)
 
-    for col in self.plot_range.columns[:-1]:
-        color = next(colors)
+for col in self.plot_range.columns[:-1]:
+    color = next(colors)
 
-        trace                 = go.Scatter()
-        trace.x               = self.plot_range.loc[:, 'stop_week']
-        trace.y               = self.plot_range.loc[:, col]
-        trace.mode            = pcl.lines_only
-        trace.marker['color'] = color
-        trace.line['width']   = 2
-        trace.name            = col
+    trace                 = go.Scatter()
+    trace.x               = self.plot_range.loc[:, 'stop_week']
+    trace.y               = self.plot_range.loc[:, col]
+    trace.mode            = pcl.lines_only
+    trace.marker['color'] = color
+    trace.line['width']   = 2
+    trace.name            = col
 
-        trace_ma                 = go.Scatter()
-        trace_ma.x               = self.plot_range.loc[:, 'stop_week']
-        trace_ma.y               = self.plot_range.loc[:, col].rolling(4).mean()
-        trace_ma.mode            = pcl.lines_only
-        trace_ma.marker['color'] = color
-        trace_ma.name            = col + '_4pma'
-        trace_ma.line['shape']   = 'spline'
-        trace_ma.line['dash']    = pcl.dashed
-        trace_ma.line['width']   = 4
+    trace_ma                 = go.Scatter()
+    trace_ma.x               = self.plot_range.loc[:, 'stop_week']
+    trace_ma.y               = self.plot_range.loc[:, col].rolling(4).mean()
+    trace_ma.mode            = pcl.lines_only
+    trace_ma.marker['color'] = color
+    trace_ma.name            = col + '_4pma'
+    trace_ma.line['shape']   = 'spline'
+    trace_ma.line['dash']    = pcl.dashed
+    trace_ma.line['width']   = 4
 
-        data.append(trace)
-        data.append(trace_ma)
+    data.append(trace)
+    data.append(trace_ma)
 
-    fig = go.Figure(data=data, layout=layout)
-    return plotly.offline.plot(figure_or_data=fig, include_plotlyjs=False,
-                               output_type='div', show_link=False)
+fig = go.Figure(data=data, layout=layout)
+return plotly.offline.plot(figure_or_data=fig, include_plotlyjs=False,
+                           output_type='div', show_link=False)
 ```
 which turns into:
 ``` Python
-    from itertools import cycle
-    import plotly
-    import plotly.graph_objs as go
-    data = go.Data()
-    plot_title =  'My Esoteric Plot Title'
-    xaxis_label = 'Date'
-    yaxis_label = 'Sliceable Height (mm)'
-    layout = go.Layout(title=plot_title,
-                       xaxis=dict(title=xaxis_label),
-                       yaxis=dict(title=yaxis_label),
-                       width=1000
-                       )
-    colors = cycle(plc.seaborn_colors)
-    scat_fact = plc.ScatterFactory
+from itertools import cycle
+import plotly
+import plotly.graph_objs as go
+from plOOtly import plotly_lines_colors as plc
 
-    for i, col in enumerate(self.plot_range.columns[:-1]):
-        color = next(colors)
-        trace = scat_fact(linecolor=color, markercolor=color, lineweight=2, mode=plc.LINES_ONLY)
-        trace.x = self.plot_range.loc[:, 'stop_week']
-        trace.y = self.plot_range.loc[:, col]
-        trace.name = col
+data = go.Data()
+plot_title =  'My Esoteric Plot Title'
+xaxis_label = 'Date'
+yaxis_label = 'Sliceable Height (mm)'
+layout = go.Layout(title=plot_title,
+                   xaxis=dict(title=xaxis_label),
+                   yaxis=dict(title=yaxis_label),
+                   width=1000
+                   )
+colors = cycle(plc.seaborn_colors)
+scat_fact = plc.ScatterFactory
 
-        trace_ma = scat_fact(linecolor=color, markercolor=color, lineweight=4, dash=plc.DASHED,
-                             lineshape=plc.SPLINE, mode=plc.LINES_ONLY)
-        trace_ma.x = self.plot_range.loc[:, 'stop_week']
-        trace_ma.y = self.plot_range.loc[:, col].rolling(4).mean()
-        trace_ma.name = col + '_4pma'
+for i, col in enumerate(self.plot_range.columns[:-1]):
+    color = next(colors)
+    trace = scat_fact(linecolor=color, markercolor=color, lineweight=2, mode=plc.LINES_ONLY)
+    trace.x = self.plot_range.loc[:, 'stop_week']
+    trace.y = self.plot_range.loc[:, col]
+    trace.name = col
 
-        data.append(trace)
-        data.append(trace_ma)
+    trace_ma = scat_fact(linecolor=color, markercolor=color, lineweight=4, dash=plc.DASHED,
+                         lineshape=plc.SPLINE, mode=plc.LINES_ONLY)
+    trace_ma.x = self.plot_range.loc[:, 'stop_week']
+    trace_ma.y = self.plot_range.loc[:, col].rolling(4).mean()
+    trace_ma.name = col + '_4pma'
 
-    fig = go.Figure(data=data, layout=layout)
-    return plotly.offline.plot(figure_or_data=fig, include_plotlyjs=False,
-                               output_type='div', show_link=False)
+    data.append(trace)
+    data.append(trace_ma)
+
+fig = go.Figure(data=data, layout=layout)
+return plotly.offline.plot(figure_or_data=fig, include_plotlyjs=False,
+                           output_type='div', show_link=False)
 ```
 
 I'd like to incorporate the pre-defined markers and lines somehow to make it super simple but I haven't decided if it's worth it
