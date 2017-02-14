@@ -30,7 +30,10 @@ class Colors(object):
         self._seaborn_cycle = cycle(self._seaborn_colors)
 
     @property
-    def seaborn_cycle(self):
+    def seaborn_colors(self):
+        return self._seaborn_cycle
+
+    def next_color(self):
         return next(self._seaborn_cycle)
 
 
@@ -180,7 +183,8 @@ class ScatterFactory(dict):
         return self._return_scatter_obj(*args, **kwargs)
 
     def line(self, *args, **kwargs):
-        return self._return_scatter_obj(*args, mode=Mode.LINES_MARKERS, **kwargs)
+        mode = kwargs.pop('mode', Mode.LINES_MARKERS)
+        return self._return_scatter_obj(*args, mode=mode, **kwargs)
 
     def _return_scatter_obj(self, x=None, y=None, color=None, markerfacecolor=None, markeredgecolor=None, markeredgewidth=None,
                             mode=Mode.MARKERS_ONLY, lw=None, ls=LineType.SOLID, symbol=None, markersize=None, lineshape=None,
