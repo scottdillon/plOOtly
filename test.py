@@ -19,4 +19,4 @@ trace1.marker.size = list([random.random() * 50.0 for x in range(100)])
 data = go.Data([trace1])
 
 plotly.offline.plot(figure_or_data=data, filename='output_files/basic-line.html',
-                    include_plotlyjs=False, show_link=False)
+                    include_plotlyjs=True, show_link=False)

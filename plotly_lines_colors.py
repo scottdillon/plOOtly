@@ -236,6 +236,80 @@ class ScatterFactory(dict):
         return scatter
 
 
+class Axis(dict):
+    """
+
+    """
+    def __init__(self, *args, **kwargs):
+        super(Axis, self).__init__(*args, **kwargs)
+
+
+class Xaxis(Axis):
+    """
+    This class might not be necessary if I don't have to label everything
+    X or Y in the Axis class
+    """
+    def __init__(self, *args, **kwargs):
+        super(Xaxis, self).__init__(*args, **kwargs)
+        self.__dict__ = self
+
+
+class Yaxis(Axis):
+    """
+    This class might not be necessary if I don't have to label everything
+    X or Y in the Axis class
+    """
+    def __init__(self, *args, **kwargs):
+        super(Axis, self).__init__(*args, **kwargs)
+        self.__dict__ = self
+
+
+class LOMargin(dict):
+    """
+    Margin object for the layout.
+    """
+    def __init__(self, *args, **kwargs):
+        super(LOMargin, self).__init__(*args, **kwargs)
+        self.__dict__ = self
+
+
+class Annotation(dict):
+    """
+    Annotation object
+    """
+    def __init__(self, *args, **kwargs):
+        super(Annotation, self).__init__(*args, **kwargs)
+        self.__dict__ = self
+
+
+class Legend(dict):
+    """
+
+    """
+    def __init__(self, *args, **kwargs):
+        super(Legend, self).__init__(*args, **kwargs)
+        self.__dict__ = self
+
+
+class Layout(dict):
+    """
+    plOOtly version of a layout object.
+    """
+    def __init__(self, *args, **kwargs):
+        super(Layout, self).__init__(*args, **kwargs)
+        self.__dict__ = self
+
+
+# report_layout = Layout()
+# report_layout['plot_bgcolor'] = 'rgba(240, 240, 240, 1.0)'
+# report_layout['xaxis']['show_grid'] = False
+# report_layout['yaxis']['show_grid'] = False
+# report_layout['xaxis']['nticks'] = 0
+# report_layout['yaxis']['nticks'] = 0
+# report_layout['xaxis']['showline'] = 0
+# report_layout['yaxis']['showline'] = 0
+
+
 sc    = Colors()
 tips  = MarkerTips()
 s     = ShortSymbols()

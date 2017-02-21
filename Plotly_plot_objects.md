@@ -202,7 +202,243 @@ Sets the radial coordinates.
 
 type: iterable: list, pd.Series, etc.
 
-## [Add layout attributes here](https://plot.ly/python/reference/#layout)
+
+
+# [Add layout attributes here](https://plot.ly/python/reference/#layout)
+
+### [orientation](https://plot.ly/python/reference/#layout-orientation)
+An angle. Works only on polar plots by rotating the plot by the given angle.
+
+### [paper_bgcolor](https://plot.ly/python/reference/#layout-paper_bgcolor)
+default:#fff. Sets the color of the paper where the graph is drawn
+
+### [scene](https://plot.ly/python/reference/#layout-scene)
+A dict which helps describe the layout of a 3D plot. The scene can have
+xaxis, yaxis, zaxis, width and margin headings which determine the tick labels, font and axis
+colors, etc.
+
+ToDo: Fill in scene keys
+### [scene[domain]](https://plot.ly/python/reference/#layout-scene-domain)
+a dict
+
+### [scene[domain][x]]()
+A list. The vertical domain of the scene.
+
+### [scene[domain][y]]()
+A list.
+### [scene[dragmode]](https://plot.ly/python/reference/#layout-scene-dragmode)
+Enumerated list of strings which determine how the plot interacts with the mouse click and drag.
+['orbit' | 'turntable' | 'zoom' | 'pan']
+### [scene[yaxis]](https://plot.ly/python/reference/#layout-scene-yaxis)
+A dict containing keys describing the yaxis attributes.
+### [scene[yaxis][showexponent]](https://plot.ly/python/reference/#layout-scene-yaxis-showexponent)
+Enumerated String. Either all exponents show beside their significands or the first, last or
+none do.
+[ all | first | last | none ]
+### [scene[yaxis][showticklabels]](https://plot.ly/python/reference/#layout-scene-yaxis-showticklabels)
+Boolean
+### [scene[yaxis][ticksuffix]](https://plot.ly/python/reference/#layout-scene-yaxis-ticksuffix)
+A string. Add a suffix to the tick labels. Instead of '5', it can be '5 ft'.
+### [scene[yaxis][color]](https://plot.ly/python/reference/#layout-scene-yaxis-color)
+Sets the colors for a objects associated with this axis at once. That would be the
+line, font, tick and grid colors. Grid color can be lightened by blending with background.
+Individual piece colors take priority over this.
+### [scene[yaxis][categoryarray]](https://plot.ly/python/reference/#layout-scene-yaxis-categoryarray)
+### [scene[yaxis][categoryorder]](https://plot.ly/python/reference/#layout-scene-yaxis-categoryorder)
+### [scene[yaxis][showticksuffix]](https://plot.ly/python/reference/#layout-scene-yaxis-showticksuffix)
+### [scene[yaxis][gridwidth]](https://plot.ly/python/reference/#layout-scene-yaxis-gridwidth)
+### [scene[yaxis][titlefont]](https://plot.ly/python/reference/#layout-scene-yaxis-titlefont)
+dict
+### [scene[yaxis][titlefont][color]](https://plot.ly/python/reference/#layout-scene-yaxis-titlefont-color)
+### [scene[yaxis][titlefont][size]](https://plot.ly/python/reference/#layout-scene-yaxis-titlefont-size)
+### [scene[yaxis][titlefont][family]](https://plot.ly/python/reference/#layout-scene-yaxis-titlefont-family)
+### [scene[yaxis][linecolor]](https://plot.ly/python/reference/#layout-scene-yaxis-linecolor)
+### [margin](https://plot.ly/python/reference/#layout-margin)
+a dict describing margin information on the layout.
+### [margin[b]](https://plot.ly/python/reference/#layout-margin-b)
+Default: 80. Set the bottom margin in pixels.
+### [margin[l]](https://plot.ly/python/reference/#layout-margin-l)
+Default: 80. Set the left margin in pixels.
+### [margin[t]](https://plot.ly/python/reference/#layout-margin-t)
+Default: 80. Set the top margin in pixels.
+### [margin[r]](https://plot.ly/python/reference/#layout-margin-r)
+Default: 80. Set the right margin in pixels.
+### [margin[pad]](https://plot.ly/python/reference/#layout-margin-pad)
+Default: 0. Set the amount of padding between the plotting area and the axis lines.
+### [margin[autoexpand]](https://plot.ly/python/reference/#layout-margin-autoexpand)
+Default: True
+### [width](https://plot.ly/python/reference/#layout-width)
+Default:700. Width of the plot area in pixels.
+### [xaxis](https://plot.ly/python/reference/#layout-xaxis)
+a dict of xaxis attributes.
+### [xaxis[showexponent]](https://plot.ly/python/reference/#layout-xaxis-showexponent)
+### [xaxis[showticklabels]](https://plot.ly/python/reference/#layout-xaxis-showticklabels)
+### [xaxis[color]](https://plot.ly/python/reference/#layout-xaxis-color)
+### [xaxis[categoryarray]](https://plot.ly/python/reference/#layout-xaxis-categoryarray)
+### [xaxis[showticksuffix]](https://plot.ly/python/reference/#layout-xaxis-showticksuffix)
+### [xaxis[titlefont]](https://plot.ly/python/reference/#layout-xaxis-titlefont)
+### [xaxis[titlefont][color]]()
+### [xaxis[titlefont][family]]()
+### [xaxis[titlefont][size]]()
+### [xaxis[linecolor]](https://plot.ly/python/reference/#layout-xaxis-linecolor)
+### [xaxis[mirror]](https://plot.ly/python/reference/#layout-xaxis-mirror)
+### [xaxis[tickvalssrc]](https://plot.ly/python/reference/#layout-xaxis-tickvalssrc)
+### [xaxis[nticks]](https://plot.ly/python/reference/#layout-xaxis-nticks)
+### [xaxis[linewidth]](https://plot.ly/python/reference/#layout-xaxis-linewidth)
+### [xaxis[autorange]](https://plot.ly/python/reference/#layout-xaxis-autorange)
+### [xaxis[ticktextsrc]](https://plot.ly/python/reference/#layout-xaxis-ticktextsrc)
+### [xaxis[tickprefix]](https://plot.ly/python/reference/#layout-xaxis-tickprefix)
+### [xaxis[position]](https://plot.ly/python/reference/#layout-xaxis-position)
+### [xaxis[tickformat]](https://plot.ly/python/reference/#layout-xaxis-tickformat)
+### [xaxis[tickmode]](https://plot.ly/python/reference/#layout-xaxis-tickmode)
+### [xaxis[title]]()
+### [xaxis[ticks]]()
+### [xaxis[overlaying]]()
+### [xaxis[rangemode]]()
+### [xaxis[showtickprefix]]()
+### [xaxis[zeroline]]()
+### [xaxis[domain]]()
+### [xaxis[gridcolor]]()
+### [xaxis[type]]()
+### [xaxis[rangeselector]](https://plot.ly/python/reference/#layout-xaxis-rangeselector)
+dict
+### [xaxis[rangeselector][bordercolor]]()
+### [xaxis[rangeselector][yanchor]]()
+### [xaxis[rangeselector][xanchor]]()
+### [xaxis[rangeselector][bgcolor]]()
+### [xaxis[rangeselector][buttons]](https://plot.ly/python/reference/#layout-xaxis-rangeselector-buttons)
+### [xaxis[rangeselector][buttons][count]]()
+### [xaxis[rangeselector][buttons][stepmode]]()
+### [xaxis[rangeselector][buttons][label]]()
+### [xaxis[rangeselector][buttons][step]]()
+### [xaxis[rangeselector][visible]]()
+### [xaxis[rangeselector][activecolor]]()
+### [xaxis[rangeselector][borderwidth]]()
+### [xaxis[rangeselector][y]]()
+### [xaxis[rangeselector][x]]()
+### [xaxis[rangeselector][font]]()
+### [xaxis[rangeselector][font][color]]()
+### [xaxis[rangeselector][font][family]]()
+### [xaxis[rangeselector][font][size]]()
+### [xaxis[separatethousands]](https://plot.ly/python/reference/#layout-xaxis-separatethousands)
+### [xaxis[zerolinewidth]]()
+### [xaxis[ticklen]]()
+### [xaxis[categoryorder]]()
+### [xaxis[hoverformat]]()
+### [xaxis[ticksuffix]]()
+### [xaxis[fixedrange]]()
+### [xaxis[showline]]()
+### [xaxis[ticktext]]()
+### [xaxis[showgrid]]()
+### [xaxis[tickvals]]()
+### [xaxis[tickfont]](https://plot.ly/python/reference/#layout-xaxis-tickfont)
+### [xaxis[tickfont][color]]()
+### [xaxis[tickfont][family]]()
+### [xaxis[tickfont][size]]()
+### [xaxis[tickwidth]]()
+### [xaxis[tick0]]()
+### [xaxis[tickangle]]()
+### [xaxis[gridwidth]]()
+### [xaxis[dtick]]()
+### [xaxis[side]]()
+### [xaxis[zerolinecolor]]()
+### [xaxis[range]]()
+### [xaxis[categoryarraysrc]]()
+### [xaxis[calendar]]()
+### [xaxis[tickcolor]]()
+### [xaxis[rangeslider]](https://plot.ly/python/reference/#layout-xaxis-rangeslider)
+### [xaxis[rangeslider][bordercolor]]()
+### [xaxis[rangeslider][visible]]()
+### [xaxis[rangeslider][thickness]]()
+### [xaxis[rangeslider][bgcolor]]()
+### [xaxis[rangeslider][range]]()
+### [xaxis[rangeslider][borderwidth]]()
+### [xaxis[anchor]]()
+### [xaxis[exponentformat]]()
+### [mapbox](https://plot.ly/python/reference/#layout-mapbox)
+### [direction]()
+For polar plots
+### [showlegend](https://plot.ly/python/reference/#layout-showlegend)
+### [separators](https://plot.ly/python/reference/#layout-separators)
+### [angularaxis](https://plot.ly/python/reference/#layout-angularaxis)
+### [geo]()
+### [legend](https://plot.ly/python/reference/#layout-legend)
+A dict.
+### [legend[bordercolor]]()
+### [legend[yanchor]]()
+### [legend[traceorder]]()
+### [legend[xanchor]]()
+### [legend[orientation]]()
+### [legend[tracegroupgap]]()
+### [legend[bgcolor]]()
+### [legend[borderwidth]]()
+### [legend[y]]()
+### [legend[x]]()
+### [legend[font]]()
+### [legend[font][color]]()
+### [legend[font][family]]()
+### [legend[font][size]]()
+### [yaxis](https://plot.ly/python/reference/#layout-yaxis)
+A dict. The same entries as xaxis.
+### [updatemenus](https://plot.ly/python/reference/#layout-updatemenus)
+A dict.
+### [annotations](https://plot.ly/python/reference/#layout-annotations)
+### [annotations[bordercolor]]()
+### [annotations[yanchor]]()
+### [annotations[text]]()
+### [annotations[arrowsize]]()
+### [annotations[textangle]]()
+### [annotations[borderwidth]]()
+### [annotations[yclick]]()
+### [annotations[ay]]()
+### [annotations[ax]]()
+### [annotations[font]]()
+### [annotations[font][color]]()
+### [annotations[font][family]]()
+### [annotations[font][size]]()
+### [annotations[arrowcolor]]()
+### [annotations[xref]]()
+### [annotations[arrowhead]]()
+### [annotations[bgcolor]]()
+### [annotations[borderpad]]()
+### [annotations[showarrow]]()
+### [annotations[opacity]]()
+### [annotations[xanchor]]()
+### [annotations[axref]]()
+### [annotations[ayref]]()
+### [annotations[arrowwidth]]()
+### [annotations[visible]]()
+### [annotations[yref]]()
+### [annotations[yref]]()
+### [annotations[align]]()
+### [annotations[clicktoshow]](https://plot.ly/python/reference/#layout-annotations-clicktoshow)
+### [annotations[xclick]]()
+### [annotations[y]]()
+### [annotations[x]]()
+### [annotations[standoff]]()
+### [shapes](https://plot.ly/python/reference/#layout-shapes)
+A dict.
+### [shapes[opacity]]()
+### [shapes[layer]]()
+### [shapes[xref]]()
+### [shapes[yref]]()
+### [shapes[visible]]()
+### [shapes[fillcolor]]()
+### [shapes[path]]()
+### [shapes[y1]]()
+### [shapes[y0]]()
+### [shapes[x1]]()
+### [shapes[x0]]()
+### [shapes[type]]()
+### [shapes[line]]()
+### [shapes[line][color]]()
+### [shapes[line][width]]()
+### [shapes[line][dash]]()
+
+### [sliders](https://plot.ly/python/reference/#layout-sliders)
+A dict
+
+### [ternary]()
 
 
 
