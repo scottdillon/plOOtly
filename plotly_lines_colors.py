@@ -24,6 +24,7 @@ class Colors(object):
     YELLOW    = 'rgba(204, 185, 116, 1.0)'
     TURQUOISE = 'rgba(100, 181, 205, 1.0)'
     BLACK     = 'rgba(  0,   0,   0, 1.0)'
+    LIGHT_GRAY= 'rbga(240, 240, 240, 1.0)'
 
     def __init__(self):
         self._seaborn_colors = [self.RED, self.BLUE, self.GREEN, self.PURPLE, self.YELLOW, self.TURQUOISE]
@@ -100,6 +101,7 @@ class ShortSymbols(object):
     def marker_shapes(self):
         return next(self._marker_shapes)
 
+
 class Marker(dict):
     """
     Takes in a dictionary object or a list of keywords and assigns them all to attributes so that go.Scatter.marker
@@ -111,6 +113,7 @@ class Marker(dict):
         super(Marker, self).__init__(*args, **kwargs)
         self.__dict__ = self
 
+
 class Line(dict):
     """
     Takes in a dictionary object or a list of keywords and assigns them all to attributes so that go.Scatter.line
@@ -121,6 +124,7 @@ class Line(dict):
     def __init__(self, *args, **kwargs):
         super(Line, self).__init__(*args, **kwargs)
         self.__dict__ = self
+
 
 class MarkerLine(dict):
     """
@@ -242,6 +246,7 @@ class Axis(dict):
     """
     def __init__(self, *args, **kwargs):
         super(Axis, self).__init__(*args, **kwargs)
+        self.__dict__ = self
 
 
 class Xaxis(Axis):
@@ -249,9 +254,21 @@ class Xaxis(Axis):
     This class might not be necessary if I don't have to label everything
     X or Y in the Axis class
     """
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, gridlines='x', **kwargs):
         super(Xaxis, self).__init__(*args, **kwargs)
-        self.__dict__ = self
+        self.showgrid = None
+        self._showgrid = gridlines
+
+    @property
+    def _showgrid(self):
+        return self.showgrid
+
+    @_showgrid.setter
+    def _showgrid(self, gridlines):
+        if 'x' in gridlines.lower():
+            self.showgrid = True
+        else:
+            self.showgrid = False
 
 
 class Yaxis(Axis):
@@ -259,18 +276,40 @@ class Yaxis(Axis):
     This class might not be necessary if I don't have to label everything
     X or Y in the Axis class
     """
-    def __init__(self, *args, **kwargs):
-        super(Axis, self).__init__(*args, **kwargs)
-        self.__dict__ = self
+    def __init__(self, *args, gridlines='y', **kwargs):
+        super(Yaxis, self).__init__(*args, **kwargs)
+        self.showgrid = None
+        self._showgrid = gridlines
+
+    @property
+    def _showgrid(self):
+        return self.showgrid
+
+    @_showgrid.setter
+    def _showgrid(self, gridlines):
+        if 'y' in gridlines.lower():
+            self.showgrid = True
+        else:
+            self.showgrid = False
 
 
-class LOMargin(dict):
+class LOMargin(go.Margin):
     """
-    Margin object for the layout.
+    Margin object for the layout. Accepts parameters for l, b, t, r
+    :param l: the left margin in pixels.
+    :param r: right margin in pixels
+    :param t: top margin value in pixels
+    :param b: bottom margin value in pixels.
+    :param pad: padding in pixels between margins and plot area
     """
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, l=50, t=50, r=50, b=50, padding=None, ae=False, **kwargs):
         super(LOMargin, self).__init__(*args, **kwargs)
-        self.__dict__ = self
+        self.t = t
+        self.r = r
+        self.b = b
+        self.l = l
+        self.pad = padding
+        self.autoexpand = ae
 
 
 class Annotation(dict):
@@ -299,6 +338,46 @@ class Layout(dict):
         super(Layout, self).__init__(*args, **kwargs)
         self.__dict__ = self
 
+
+class Data(dict):
+    """
+
+    """
+    def __init__(self, *args, **kwargs):
+        super(Data, self).__init__(*args, **kwargs)
+        self.__dict__ = self
+
+
+class Figure(dict):
+    """
+
+    """
+    def __init__(self, *args, **kwargs):
+        super(Figure, self).__init__(*args, **kwargs)
+        self.__dict__ = self
+
+
+class PlotFactory(object):
+    """
+    Simple factory that returns go.Figure, go.Layout and go.Data
+    objects.
+    """
+    def __init__(self):
+        self.__dict__ = self
+        pass
+
+    def __new__(self, *args, width=None, height=None, plot_color=None, paper_color=None,
+                 gridlines='xy', annotations=[], showlegend=True, margin=None, **kwargs):
+        xaxis = Xaxis(gridlines=gridlines)
+        yaxis = Yaxis(gridlines=gridlines)
+
+        figure = go.Figure()
+        layout = go.Layout(xaxis=xaxis, yaxis=yaxis, plot_bgcolor=plot_color, annotations=annotations,
+                           paper_bgcolor=paper_color, width=width, height=height, showlegend=showlegend,
+                           margin=margin)
+        data = go.Data()
+
+        return figure, layout, data
 
 # report_layout = Layout()
 # report_layout['plot_bgcolor'] = 'rgba(240, 240, 240, 1.0)'

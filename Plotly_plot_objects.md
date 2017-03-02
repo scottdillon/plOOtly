@@ -204,13 +204,25 @@ type: iterable: list, pd.Series, etc.
 
 
 
-# [Add layout attributes here](https://plot.ly/python/reference/#layout)
+# [Layout](https://plot.ly/python/reference/#layout)
 
 ### [orientation](https://plot.ly/python/reference/#layout-orientation)
 An angle. Works only on polar plots by rotating the plot by the given angle.
 
 ### [paper_bgcolor](https://plot.ly/python/reference/#layout-paper_bgcolor)
 default:#fff. Sets the color of the paper where the graph is drawn
+
+### [width](https://plot.ly/python/reference/#layout-width)
+Default:700. Width of the plot area in pixels.
+
+### [showlegend](https://plot.ly/python/reference/#layout-showlegend)
+### [separators](https://plot.ly/python/reference/#layout-separators)
+
+
+
+
+
+
 
 ### [scene](https://plot.ly/python/reference/#layout-scene)
 A dict which helps describe the layout of a 3D plot. The scene can have
@@ -267,8 +279,7 @@ Default: 80. Set the right margin in pixels.
 Default: 0. Set the amount of padding between the plotting area and the axis lines.
 ### [margin[autoexpand]](https://plot.ly/python/reference/#layout-margin-autoexpand)
 Default: True
-### [width](https://plot.ly/python/reference/#layout-width)
-Default:700. Width of the plot area in pixels.
+
 ### [xaxis](https://plot.ly/python/reference/#layout-xaxis)
 a dict of xaxis attributes.
 ### [xaxis[showexponent]](https://plot.ly/python/reference/#layout-xaxis-showexponent)
@@ -358,8 +369,7 @@ dict
 ### [mapbox](https://plot.ly/python/reference/#layout-mapbox)
 ### [direction]()
 For polar plots
-### [showlegend](https://plot.ly/python/reference/#layout-showlegend)
-### [separators](https://plot.ly/python/reference/#layout-separators)
+
 ### [angularaxis](https://plot.ly/python/reference/#layout-angularaxis)
 ### [geo]()
 ### [legend](https://plot.ly/python/reference/#layout-legend)
